@@ -1,4 +1,15 @@
+import { useState } from "react";
+import ToggleAndTrashIcons from "./components/ToggleAndTrashIcons";
+
 function App() {
+	const allTasks = [
+		{ id: 1, task: "Task 1", complete: false },
+		{ id: 2, task: "Task 2", complete: true },
+		{ id: 3, task: "Task 3", complete: false },
+	];
+
+	const [tasks, setNewTasks] = useState(allTasks);
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log("asdfg");
@@ -11,8 +22,8 @@ function App() {
 				using ReactJS, Redux and TailwindCSS
 			</h2>
 
-			<div className="tw-w-full tw-flex tw-py-10 tw-px-20">
-				<div className="tw-w-4/12 tw-flex tw-flex-wrap md:tw-mr-20">
+			<div className="tw-w-screen tw-flex tw-flex-wrap md:tw-flex-nowrap tw-py-10 tw-px-20">
+				<div className="tw-w-full md:tw-w-6/12 tw-flex md:tw-justify-center tw-flex-wrap md:tw-mr-20">
 					<form onSubmit={handleSubmit} className="tw-mx-auto">
 						<div>
 							<label
@@ -29,96 +40,22 @@ function App() {
 						</div>
 						<button
 							type="submit"
-							className="tw-my-2 tw-rounded-full tw-p-3 tw-bg-green-600 hover:tw-bg-green-500 tw-text-white">
+							className="tw-my-4 tw-rounded-full tw-p-3 tw-bg-green-600 hover:tw-bg-green-500 tw-text-white">
 							Add new task
 						</button>
 					</form>
 				</div>
-				<div className="tw-w-8/12 tw-flex tw-flex-wrap">
-					<div className="tw-w-full tw-p-2 tw-rounded  tw-bg-green-500 tw-text-black tw-mb-4 tw-flex tw-justify-between">
-						Task 1
-						<div className="tw-flex">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								className="tw-h-5 tw-w-5 tw-mr-3"
-								viewBox="0 0 20 20"
-								fill="currentColor">
-								<path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-								<path
-									fillRule="evenodd"
-									d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-									clipRule="evenodd"
-								/>
-							</svg>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								className="tw-h-5 tw-w-5"
-								viewBox="0 0 20 20"
-								fill="currentColor">
-								<path
-									fillRule="evenodd"
-									d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-									clipRule="evenodd"
-								/>
-							</svg>
+				<div className="tw-w-full md:tw-w-8/12 tw-flex md:tw-justify-center tw-flex-wrap  tw-py-3">
+					{tasks.map((e) => (
+						<div
+							key={e.id}
+							className={`tw-w-full tw-h-12 md:tw-w-3/5 tw-p-2 tw-rounded tw-bg-green-500 tw-text-black tw-mb-4 tw-flex tw-justify-between tw-items-center ${
+								e.complete && "tw-line-through"
+							}`}>
+							{e.task}
+							<ToggleAndTrashIcons />
 						</div>
-					</div>
-					<div className="tw-w-full tw-p-2 tw-rounded tw-bg-green-500 tw-text-black tw-mb-4 tw-flex tw-justify-between">
-						Task 2
-						<div className="tw-flex">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								className="tw-h-5 tw-w-5 tw-mr-3"
-								viewBox="0 0 20 20"
-								fill="currentColor">
-								<path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-								<path
-									fillRule="evenodd"
-									d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-									clipRule="evenodd"
-								/>
-							</svg>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								className="tw-h-5 tw-w-5"
-								viewBox="0 0 20 20"
-								fill="currentColor">
-								<path
-									fillRule="evenodd"
-									d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-									clipRule="evenodd"
-								/>
-							</svg>
-						</div>
-					</div>
-					<div className="tw-w-full tw-p-2 tw-rounded  tw-bg-green-500 tw-text-black tw-mb-4 tw-flex tw-justify-between">
-						Task 3
-						<div className="tw-flex">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								className="tw-h-5 tw-w-5 tw-mr-3"
-								viewBox="0 0 20 20"
-								fill="currentColor">
-								<path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-								<path
-									fillRule="evenodd"
-									d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-									clipRule="evenodd"
-								/>
-							</svg>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								className="tw-h-5 tw-w-5"
-								viewBox="0 0 20 20"
-								fill="currentColor">
-								<path
-									fillRule="evenodd"
-									d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-									clipRule="evenodd"
-								/>
-							</svg>
-						</div>
-					</div>
+					))}
 				</div>
 			</div>
 		</div>
