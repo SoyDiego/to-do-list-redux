@@ -1,9 +1,12 @@
-const ToggleAndTrashIcons = () => {
-    return (
+import { removeTask, toggleTask } from "../actions";
+
+const ToggleAndTrashIcons = ({ dispatch, task }) => {
+	return (
 		<div className="tw-flex">
 			<svg
+				onClick={() => dispatch(toggleTask(task.id))}
 				xmlns="http://www.w3.org/2000/svg"
-				className="tw-h-7 tw-w-7 tw-mr-3 tw-bg-gray-100 tw-p-1 tw-rounded"
+				className="tw-h-7 tw-w-7 tw-mr-3 tw-bg-gray-100 tw-p-1 tw-rounded tw-cursor-pointer"
 				fill="none"
 				viewBox="0 0 24 24"
 				stroke="currentColor">
@@ -15,8 +18,9 @@ const ToggleAndTrashIcons = () => {
 				/>
 			</svg>
 			<svg
+				onClick={() => dispatch(removeTask(task.id))}
 				xmlns="http://www.w3.org/2000/svg"
-				className="tw-h-7 tw-w-7 tw-bg-red-600 tw-p-1 tw-rounded tw-text-white"
+				className="tw-h-7 tw-w-7 tw-bg-red-600 tw-p-1 tw-rounded tw-text-white tw-cursor-pointer"
 				viewBox="0 0 20 20"
 				fill="currentColor">
 				<path
@@ -27,6 +31,6 @@ const ToggleAndTrashIcons = () => {
 			</svg>
 		</div>
 	);
-}
+};
 
-export default ToggleAndTrashIcons
+export default ToggleAndTrashIcons;
