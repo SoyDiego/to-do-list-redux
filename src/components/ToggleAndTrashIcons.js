@@ -16,7 +16,7 @@ const ToggleAndTrashIcons = () => {
 			</svg>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
-				className="tw-h-7 tw-w-7 tw-bg-red-600 tw-p-1 tw-rounded"
+				className="tw-h-7 tw-w-7 tw-bg-red-600 tw-p-1 tw-rounded tw-text-white"
 				viewBox="0 0 20 20"
 				fill="currentColor">
 				<path
